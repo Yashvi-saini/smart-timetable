@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll } from "framer-motion";
-import { ArrowRight, Calendar, Brain, Zap, Play, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Calendar, Brain, Zap, Play, CheckCircle2, Shield } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -179,36 +179,128 @@ export default function Home() {
       </section>
 
       {/* Feature Grid */}
-      <section id="features" className="py-24 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400 mb-4">
-              Reinventing the Schedule
+      <section id="features" className="py-24 bg-[#020617] relative overflow-hidden">
+        {/* Background Gradient */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400 mb-6">
+              Core Capabilities
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              We replaced manual conflict checking with an intelligent physics engine.
+            <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+              Engineered for precision. A conflict-free zone powered by intelligent algorithms.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={<Calendar className="h-6 w-6 text-emerald-400" />}
-              title="Smart Tetris Overlap"
-              description="Dynamic resizing for overlapping events. Say goodbye to cluttered, unreadable schedules."
-              delay={0.4}
-            />
-            <FeatureCard
-              icon={<Zap className="h-6 w-6 text-amber-400" />}
-              title="Physics Feedback"
-              description="Tactile interactions. Cards lift, shadows deepen, and invalid drops shake with intuitive feedback."
-              delay={0.5}
-            />
-            <FeatureCard
-              icon={<Brain className="h-6 w-6 text-pink-400" />}
-              title="Logic Engine"
-              description="Real-time validation for prerequisites and travel time. The system thinks before you drop."
-              delay={0.6}
-            />
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="col-span-1 md:col-span-2 p-8 rounded-3xl bg-slate-900/40 border border-white/10 hover:border-indigo-500/30 transition-all group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="h-12 w-12 rounded-xl bg-indigo-500/20 flex items-center justify-center mb-6">
+                  <Calendar className="h-6 w-6 text-indigo-400" />
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-3">Responsive Grid Layout</h3>
+                <p className="text-slate-400 leading-relaxed max-w-lg">
+                  Our custom "Tetris" algorithm handles complex n-way overlaps automatically. Events flow like liquid, resizing dynamically to maximize screen real estate without clutter.
+                </p>
+              </div>
+              {/* Decorative Visual for Card 1 */}
+              <div className="absolute right-0 bottom-0 w-64 h-32 opacity-20 transform translate-x-10 translate-y-10">
+                <div className="grid grid-cols-2 gap-2 transform -rotate-12">
+                  <div className="h-20 bg-indigo-500 rounded-lg"></div>
+                  <div className="h-24 bg-purple-500 rounded-lg translate-y-8"></div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="col-span-1 p-8 rounded-3xl bg-slate-900/40 border border-white/10 hover:border-purple-500/30 transition-all group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
+                  <Brain className="h-6 w-6 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">Logic Engine</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  Zero-latency validation checks against academic rules like prerequisite sequencing and travel time gaps.
+                </p>
+              </div>
+              {/* Decorative Visual */}
+              <div className="absolute right-4 top-4 opacity-20 pointer-events-none">
+                <div className="flex flex-col gap-2 items-end">
+                  <div className="w-16 h-2 bg-purple-500 rounded-full"></div>
+                  <div className="w-8 h-2 bg-purple-500 rounded-full"></div>
+                  <div className="w-12 h-2 bg-purple-500 rounded-full"></div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="col-span-1 p-8 rounded-3xl bg-slate-900/40 border border-white/10 hover:border-amber-500/30 transition-all group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="h-12 w-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-6">
+                  <Zap className="h-6 w-6 text-amber-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">Physics Feedback</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  Draggable elements feel alive. Invalid drops trigger intuitive "shake" animations for immediate haptic-like feedback.
+                </p>
+              </div>
+              {/* Decorative Visual */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none pr-4">
+                <div className="flex flex-col gap-1 items-end transform -rotate-12">
+                  <div className="w-12 h-1 bg-amber-500/50 rounded-full"></div>
+                  <div className="w-20 h-1 bg-amber-500/50 rounded-full"></div>
+                  <div className="w-8 h-1 bg-amber-500/50 rounded-full"></div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 4 - New Feature to balance grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="col-span-1 md:col-span-2 p-8 rounded-3xl bg-slate-900/40 border border-white/10 hover:border-emerald-500/30 transition-all group relative overflow-hidden md:col-start-2"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-6">
+                  <Shield className="h-6 w-6 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-3">Conflict-Free Guarantee</h3>
+                <p className="text-slate-400 leading-relaxed max-w-lg">
+                  The system prevents hard overlaps. Professors cannot be in two places at once. We enforce hard constraints while allowing soft preferences to guide the schedule.
+                </p>
+              </div>
+              {/* Decorative Visual */}
+              <div className="absolute -right-12 -bottom-12 opacity-10 rotate-12 pointer-events-none">
+                <div className="w-48 h-48 bg-emerald-500 rounded-[3rem] blur-xl"></div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -318,16 +410,23 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-32 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-indigo-600/10 blur-[100px] pointer-events-none"></div>
-        <div className="max-w-3xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to Optimize?</h2>
-          <p className="text-slate-400 text-xl mb-10">Join 500+ universities modernizing their workflow today.</p>
-          <Link
-            href="/app"
-            className="inline-flex h-16 items-center justify-center rounded-full bg-white px-10 font-bold text-slate-900 transition-all duration-300 hover:scale-105 hover:bg-indigo-50"
-          >
-            Launch Scheduler
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
+            Ready to <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Optimize?</span>
+          </h2>
+          <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+            Join the academic revolution. Experience the conflict-free guarantee today.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/app"
+              className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-white px-8 font-bold text-slate-900 transition-all duration-300 hover:bg-slate-200 hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+            >
+              <span className="mr-2">Launch Scheduler</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -338,7 +437,7 @@ export default function Home() {
             <div className="h-6 w-6 bg-slate-800 rounded flex items-center justify-center">
               <span className="font-bold text-xs text-white">U</span>
             </div>
-            <p>© 2024 UniFlow Inc.</p>
+            <p>© 2026 UniFlow Inc.</p>
           </div>
           <div className="flex gap-8">
             <a href="#" className="hover:text-indigo-400 transition-colors">Privacy</a>
