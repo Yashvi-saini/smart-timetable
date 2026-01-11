@@ -99,13 +99,27 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
-              className="mt-12 flex items-center justify-center lg:justify-start gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500"
+              className="mt-12 flex flex-col items-center lg:items-start gap-4 opacity-70"
             >
-              {/* Trusted By Lines */}
-              <p className="text-xs tracking-widest uppercase font-semibold">Trusted By Departments At</p>
-              <div className="h-px w-12 bg-white/20"></div>
-              <span className="font-serif font-bold">Stanford</span>
-              <span className="font-mono font-bold">MIT</span>
+              <p className="text-xs tracking-widest uppercase font-semibold text-slate-500">Built With Modern Stack</p>
+              <div className="flex gap-6 grayscale transition-all duration-500 hover:grayscale-0">
+                <div className="flex items-center gap-2 group">
+                  <div className="w-2 h-2 rounded-full bg-white group-hover:bg-black transition-colors"></div>
+                  <span className="font-bold text-slate-300 group-hover:text-white transition-colors">Next.js 15</span>
+                </div>
+                <div className="flex items-center gap-2 group">
+                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  <span className="font-bold text-slate-300 group-hover:text-blue-400 transition-colors">TypeScript</span>
+                </div>
+                <div className="flex items-center gap-2 group">
+                  <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
+                  <span className="font-bold text-slate-300 group-hover:text-cyan-300 transition-colors">Tailwind</span>
+                </div>
+                <div className="flex items-center gap-2 group">
+                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                  <span className="font-bold text-slate-300 group-hover:text-purple-400 transition-colors">Motion</span>
+                </div>
+              </div>
             </motion.div>
           </div>
 
@@ -204,22 +218,22 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-8">From Chaos to Clarity in <span className="text-indigo-400">Seconds</span></h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-8">Intelligent <span className="text-indigo-400">Architecture</span></h2>
               <div className="space-y-8">
                 <StepItem
                   number="01"
-                  title="Import Data"
-                  desc="Upload your CSV or connect directly to your SIS. We handle the parsing."
+                  title="Tetris Layout Algorithm"
+                  desc="Events self-organize. Overlapping blocks dynamically resize and share column space based on graph coloring principles."
                 />
                 <StepItem
                   number="02"
-                  title="Drag & Drop"
-                  desc="Visually arrange classes. Our engine prevents conflicts in real-time."
+                  title="Interactive Physics"
+                  desc="Framer Motion powers the drag gestures, providing haptic-like visual feedback with lift spots and error shaking."
                 />
                 <StepItem
                   number="03"
-                  title="Publish"
-                  desc="Share the optimized schedule with students and faculty instantly."
+                  title="Logic Guardrails"
+                  desc="Validation runs on every frame. We explicitly check 'Travel Time' paradoxes and 'Prerequisite' chains before committing changes."
                 />
               </div>
             </div>
