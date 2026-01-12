@@ -1,6 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SmartScheduler
+
+A smart timetable management application built with Next.js.
+
+## Architecture
+
+This application follows a strict Server/Client component split to optimize performance and interactivity.
+
+### Server/Client Split Diagram
+
+```text
+  +-------------------------------------+       +-------------------------------------+
+  |             SERVER SIDE             |       |             CLIENT SIDE             |
+  +-------------------------------------+       +-------------------------------------+
+  |                                     |       |                                     |
+  |  [ app/layout.tsx ]                 |       |                                     |
+  |  Root Layout & HTML Shell           |       |                                     |
+  |            |                        |       |                                     |
+  |            v                        |       |                                     |
+  |  [ app/page.tsx ] ------------------|------>|  [ components/SchedulerClient.tsx ] |
+  |  Server Entry Point                 | JSON  |  Interactive UI & State Manager     |
+  |                                     |       |            |       |                |
+  |                                     |       |            v       v                |
+  |                                     |       |      [ lib/logic.ts ]               |
+  |                                     |       |      Logic & Helpers       |
+  |                                     |       |                                     |
+  +-------------------------------------+       +-------------------------------------+
+```
+
+### Components
+
+- **Server Components**: 
+  - `app/layout.tsx`: Defines the global layout and metadata.
+  - `app/page.tsx`: The entry point for the main route, serving as the shell for the application.
+
+- **Client Components**:
+  - `components/SchedulerClient.tsx`: The core interactive component that handles state, user inputs, and time management logic.
+
+- **Utilities**:
+  - `lib/`: Contains shared types and helper functions.
+
+## Gallery
+
+### Demo Video
+[Watch Demo Video](./public/video.mp4)
+
+### Screenshots
+
+![Dashboard Overview](./public/ss1.png)
+
+![Schedule View](./public/ss2.png)
+
+![Settings](./public/ss3.png)
+
+![Mobile View](./public/ss4.png)
+
+---
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 First, run the development server:
 
@@ -20,14 +78,6 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
