@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useScroll } from "framer-motion";
-import { ArrowRight, Calendar, Brain, Zap, Play, CheckCircle2, Shield } from "lucide-react";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
+import { ArrowRight, Calendar, Brain, Zap, Play, CheckCircle2, Shield, X } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -87,7 +88,10 @@ export default function Home() {
                 <span className="mr-2">Get Started</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <button className="h-14 px-8 rounded-full text-slate-300 hover:text-white border border-white/10 hover:bg-white/5 transition-all flex items-center gap-2 group">
+              <button
+                onClick={() => setIsVideoOpen(true)}
+                className="h-14 px-8 rounded-full text-slate-300 hover:text-white border border-white/10 hover:bg-white/5 transition-all flex items-center gap-2 group"
+              >
                 <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
                   <Play className="w-3 h-3 fill-current" />
                 </div>
@@ -447,6 +451,38 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <AnimatePresence>
+        {isVideoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setIsVideoOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative max-w-5xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors z-10"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <video
+                src="/video.mp4"
+                controls
+                autoPlay
+                className="w-full h-auto"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
